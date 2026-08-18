@@ -17,7 +17,7 @@
   <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete %>
 <% else %>
 
-  <%= simple_form_for @objective do |f| %>
+  <%= simple_form_for @objective, url: objectives_path, method: :post do |f| %>
 
     <%= f.input :distance, label: "Distance" %>
 
