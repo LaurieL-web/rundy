@@ -7,3 +7,7 @@
 <p>Allure: <%= @session.pace %></p>
 
 <p>Contenu: <%= @session.content %></p>
+
+<%= link_to "Delete session",
+  session_path(@session),
+ data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %>
