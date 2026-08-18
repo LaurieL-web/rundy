@@ -1,11 +1,11 @@
-class SessionsController < ApplicationController
+class SeancesController < ApplicationController
   def show
-    @session = Session.find(params[:id])
+    @seance = Seance.find(params[:id])
   end
 
   def destroy
-    @session = Session.find(params[:id])
-    @session.destroy
+    @seance = Seance.find(params[:id])
+    @seance.destroy
 
     redirect_to root_path
     # rediction à changer où ?
