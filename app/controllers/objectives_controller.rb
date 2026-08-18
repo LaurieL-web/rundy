@@ -1,4 +1,5 @@
 class ObjectivesController < ApplicationController
+<<<<<<< HEAD
 
   def create
     @objective = Objective.new(objective_params)
@@ -61,5 +62,9 @@ class ObjectivesController < ApplicationController
 
   def objective_params
     params.require(:objective).permit(:distance, :target_time, :prepa_duration, :frequency)
+=======
+  def new
+    @objective = Objective.new
+>>>>>>> master
   end
 end
