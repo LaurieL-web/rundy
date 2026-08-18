@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_18_122535) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_18_150847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_18_122535) do
     t.index ["user_id"], name: "index_objectives_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "seances", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", null: false
     t.float "distance"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_18_122535) do
     t.string "pace"
     t.string "session_type"
     t.datetime "updated_at", null: false
-    t.index ["objective_id"], name: "index_sessions_on_objective_id"
+    t.index ["objective_id"], name: "index_seances_on_objective_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,5 +71,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_18_122535) do
   add_foreign_key "chats", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "objectives", "users"
-  add_foreign_key "sessions", "objectives"
+  add_foreign_key "seances", "objectives"
 end

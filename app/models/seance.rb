@@ -1,4 +1,4 @@
-class Session < ApplicationRecord
+class Seance < ApplicationRecord
   belongs_to :objective
 
   validates :session_type, presence: true
