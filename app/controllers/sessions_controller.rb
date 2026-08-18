@@ -31,4 +31,5 @@ class SessionsController < ApplicationController
 
       Return the updated session values.
     PROMPT
+  end
 end
