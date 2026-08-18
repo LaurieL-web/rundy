@@ -1,6 +1,6 @@
 class Objective < ApplicationRecord
   belongs_to :user
-  has_many :sessions, dependent: :destroy
+  has_many :seances, dependent: :destroy
   has_many :chats
 
   validates :distance, presence: true
