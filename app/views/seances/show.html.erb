@@ -1,0 +1,13 @@
+<h1>Seance</h1>
+
+<p>Type: <%= @seance.seance_type %></p>
+
+<p>Distance: <%= @seance.distance %> km</p>
+
+<p>Allure: <%= @seance.pace %></p>
+
+<p>Contenu: <%= @seance.content %></p>
+
+<%= link_to "Delete session",
+  session_path(@seance),
+ data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %>
