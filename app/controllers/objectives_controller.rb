@@ -6,51 +6,50 @@ class ObjectivesController < ApplicationController
     if @objective.save!
       redirect_to objective_seances_path(@objective)
       prompt = <<-PROMPT
-      Tu es mon coach de course à pied expérimenté. Je souhaite préparer une course de #{@objective.distance} km avec pour objectif de la terminer en #{@objective.target_time}.
-      Construis-moi un programme d’entraînement de #{@objective.prepa_duration} semaines, avec #{@objective.frequency} séances de course par semaine.
-      Le programme doit être progressif et inclure les différents types de séances nécessaires : sorties faciles, sorties longues, séances tempo/seuil, intervalles et récupération/allègement avant la course.
-      Pour chaque séance, indique uniquement :
-      seance_type
-      distance
-      pace
-      content
-      Les séances doivent être claires, concises et précisément définies, sans explications supplémentaires.
-      Réponds uniquement avec le format Ruby suivant, compatible avec Ruby on Rails :
-      seances = [
+      Tu es un coach de course à pied expert.
+      Objectif : #{@objective.distance} km en #{@objective.target_time}
+      Durée : #{@objective.prepa_duration} semaines
+      Fréquence : #{@objective.frequency} séances/semaine
+      Génère un programme progressif et cohérent incluant selon les besoins : endurance facile, sortie longue, tempo/seuil, fractionné/intervalles, récupération et allègement avant la course.
+      CONTRAINTES :
+      - Réponds uniquement en Ruby valide, sans Markdown ni texte supplémentaire.
+      - Variable racine : `seances`.
+      - Exactement #{@objective.prepa_duration} objets = 1 objet par semaine.
+      - `week` va de 1 à #{@objective.prepa_duration}.
+      - Chaque semaine contient exactement #{@objective.frequency} séances.
+      - Ne jamais mélanger les séances entre les semaines.
+      - Chaque séance contient uniquement : `seance_type`, `distance`, `pace`, `content`.
+      - `distance` est en kilomètres.
+      - `pace` est au format `MM:SS/km`.
+      - `content` est précis et concis, avec échauffement, blocs et retour au calme si nécessaire.
+      - Les volumes et allures doivent être adaptés à l'objectif.
+      - La charge doit progresser progressivement.
+      - Prévoir un allègement avant la course.
+      FORMAT EXACT :
+      [
         {
           week: 1,
           seances: [
             {
-              seance_type: "easy",
+              session_type: "easy",
               distance: 6,
               pace: "6:15/km",
-              content: "Course facile en endurance fondamentale"
-            },
-            {
-              seance_type: "tempo",
-              distance: 8,
-              pace: "5:25/km",
-              content: "2 km échauffement + 4 km à allure seuil + 2 km retour au calme"
-            }
-          ]
-        },
-        {
-          week: 2,
-          seances: [
-            {
-              seance_type: "easy",
-              distance: 6,
-              pace: "6:10/km",
-              content: "Course facile en endurance fondamentale"
+              content: "6 km en endurance fondamentale"
             }
           ]
         }
       ]
+      Vérifier avant de répondre :
+      #{@objective.prepa_duration} semaines × #{@objective.frequency} séances.
       PROMPT
-      # seances = RubyLLM.chat.ask(prompt).content
-
-
-
+      seances = RubyLLM.chat.ask(prompt).content
+      eval(seances).each do |week|
+        week[:seances].each do |seance|
+          new_seance = Seance.new(seance)
+          new_seance.objective = @objective
+          new_seance.save
+        end
+      end
     else
       redirect_to root_path, status: :unprocessable_entity
     end
