@@ -1,6 +1,6 @@
 class SeancesController < ApplicationController
   before_action :set_objective, only: [:show, :index]
-  before_action :set_seance, only: [:edit, :update]
+  before_action :set_seance, only: [:update]
 
   def show
     @seance = Seance.find(params[:id])
@@ -16,8 +16,9 @@ class SeancesController < ApplicationController
       .ask(prompt_update)
 
     @seance.update!(response.content)
+    @objective = @seance.objective
 
-    redirect_to seances_path
+    redirect_to objective_seances_path(@objective)
   end
 
   private
