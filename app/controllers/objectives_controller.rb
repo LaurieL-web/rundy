@@ -7,26 +7,31 @@ class ObjectivesController < ApplicationController
       redirect_to objective_seances_path(@objective)
       prompt = <<-PROMPT
       Tu es un coach de course à pied expert.
+
       Objectif : #{@objective.distance} km en #{@objective.target_time}
       Durée : #{@objective.prepa_duration} semaines
-      Fréquence : #{@objective.frequency} séances/semaine
-      Génère un programme progressif et cohérent incluant selon les besoins : endurance facile, sortie longue, tempo/seuil, fractionné/intervalles, récupération et allègement avant la course.
-      CONTRAINTES :
-      - Réponds uniquement en Ruby valide, sans Markdown ni texte supplémentaire.
-      - Variable racine : `seances`.
-      - Exactement #{@objective.prepa_duration} objets = 1 objet par semaine.
+      Fréquence : #{@objective.frequency} séances par semaine
+
+      Génère un programme progressif et cohérent incluant : endurance facile, sortie longue, tempo/seuil, fractionné/intervalles, récupération et allègement avant la course.
+
+      CONTRAINTES STRICTES :
+      - Réponds uniquement avec du Ruby valide, sans Markdown ni texte.
+      - Le tableau doit contenir EXACTEMENT #{@objective.prepa_duration} semaines.
+      - Chaque semaine doit contenir EXACTEMENT #{@objective.frequency} séances.
+      - Nombre TOTAL de séances attendu : #{@objective.prepa_duration} × #{@objective.frequency}.
+      - INTERDICTION d'ajouter une séance supplémentaire.
       - `week` va de 1 à #{@objective.prepa_duration}.
-      - Chaque semaine contient exactement #{@objective.frequency} séances.
-      - Ne jamais mélanger les séances entre les semaines.
-      - Chaque séance contient uniquement : `seance_type`, `distance`, `pace`, `content`.
+      - Chaque séance contient uniquement : `session_type`, `distance`, `pace`, `content`.
       - `distance` est en kilomètres.
       - `pace` est au format `MM:SS/km`.
-      - `content` est précis et concis, avec échauffement, blocs et retour au calme si nécessaire.
+      - `content` est précis et concis.
       - Les volumes et allures doivent être adaptés à l'objectif.
-      - La charge doit progresser progressivement.
-      - Prévoir un allègement avant la course.
-      FORMAT EXACT :
-      [
+      - La charge progresse progressivement.
+      - Les dernières semaines réduisent progressivement la charge avant la course.
+      - Ne crée pas de semaine supplémentaire pour la course : la course fait partie des séances si elle est incluse dans le programme.
+
+      FORMAT :
+      seances = [
         {
           week: 1,
           seances: [
@@ -39,8 +44,13 @@ class ObjectivesController < ApplicationController
           ]
         }
       ]
-      Vérifier avant de répondre :
-      #{@objective.prepa_duration} semaines × #{@objective.frequency} séances.
+
+      AVANT DE RÉPONDRE, VÉRIFIE :
+      - Nombre de semaines = #{@objective.prepa_duration}
+      - Nombre de séances dans CHAQUE semaine = #{@objective.frequency}
+      - Nombre TOTAL de séances = #{@objective.prepa_duration * @objective.frequency}
+      - Aucune séance supplémentaire.
+
       PROMPT
       seances = RubyLLM.chat.ask(prompt).content
       eval(seances).each do |week|

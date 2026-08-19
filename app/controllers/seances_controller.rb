@@ -13,7 +13,7 @@ class SeancesController < ApplicationController
   end
 
   def index
-    @seances = @objective.seances.all
+    @seances = @objective.seances
   end
 
   private
