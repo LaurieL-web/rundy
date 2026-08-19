@@ -1,7 +1,7 @@
 class SeancesController < ApplicationController
-  before_action :set_objective, only: [ :show, :index]
-  before_action :set_session, only: [:edit, :update]
-  
+  before_action :set_objective, only: [:show, :index]
+  before_action :set_seance, only: [:edit, :update]
+
   def show
     @seance = Seance.find(params[:id])
   end
@@ -10,41 +10,39 @@ class SeancesController < ApplicationController
     @seances = @objective.seances.all
   end
 
-
   def update
     response = RubyLLM
       .chat
       .ask(prompt_update)
 
-    @session.update!(response.content)
+    @seance.update!(response.content)
 
-    redirect_to sessions_path
+    redirect_to seances_path
   end
 
   private
   def set_session
-    @session = Session.find(params[:id])
+    @seance = Seance.find(params[:id])
   end
 
   def prompt_update
     <<~PROMPT
       You are an experienced running coach.
 
-      Update this running session based on the user's request.
+      Update this running seance based on the user's request.
 
       Current session:
-      Session type: #{@session.session_type}
-      Distance: #{@session.distance} km
-      Pace: #{@session.pace}
-      Content: #{@session.content}
+      Session type: #{@seance.session_type}
+      Distance: #{@seance.distance} km
+      Pace: #{@seance.pace}
+      Content: #{@seance.content}
       User request: #{params[:prompt]}
 
-      Return the updated session values. As a hash
+      Return the updated seance values. As a hash
     PROMPT
   end
 
   def set_objective
     @objective = Objective.find(params[:objective_id])
   end
-
 end
