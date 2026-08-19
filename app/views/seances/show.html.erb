@@ -7,7 +7,7 @@
 
   <div class="card shadow-sm border-0">
       <div class="card-body p-4">
-        <h2 class="h5 fw-bold mb-3">Seance informations</h2>
+        <h2 class="h5 fw-bold mb-3">Détails de la séance</h2>
         <p>Type: <%= @seance.session_type %></p>
 
         <p>Distance: <%= @seance.distance %> km</p>
@@ -19,7 +19,7 @@
 
       <div class="d-flex gap-2 mt-4">
        <%= link_to "Delete session",
-        seance_path(@seance),
+        objective_seance_path(@objective),
         class: "btn btn-danger",
         data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %>
       </div>

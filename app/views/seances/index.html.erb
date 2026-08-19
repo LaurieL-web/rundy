@@ -1,2 +1,115 @@
-<h1>Mon objectif:</h1>
-<%= @objective.distance %>
+<div class="container py-5">
+
+  <!-- Header objectif -->
+  <div class="mb-5">
+    <h1 class="fw-bold mb-3">Mon objectif</h1>
+
+    <div class="row g-3">
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <small class="text-muted">Distance</small>
+            <h3 class="mb-0">
+              <%= @objective.distance %> km
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <small class="text-muted">Durée</small>
+            <h3 class="mb-0">
+              <%= @objective.prepa_duration %> semaines
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <small class="text-muted">Séances</small>
+            <h3 class="mb-0">
+              <%= @objective.frequency %>
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <small class="text-muted">Fréquence</small>
+            <h3 class="mb-0">
+              <%= @objective.seances.count %> / semaine
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Programme -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold mb-0">Mon programme</h2>
+    <span class="badge bg-light text-dark">
+      <%= @objective.prepa_duration %> semaines
+    </span>
+  </div>
+
+
+  <!-- Semaines -->
+  <% @seances.each_slice(@objective.frequency).with_index do |seances, week_index| %>
+
+    <div class="card shadow-sm border-0 mb-4">
+
+      <!-- Header semaine -->
+      <div class="card-header bg-white border-0 py-3">
+        <h3 class="h5 fw-bold mb-0">
+          Semaine <%= week_index + 1 %>
+        </h3>
+      </div>
+
+      <!-- Séances -->
+      <div class="list-group list-group-flush">
+
+        <% seances.each_with_index do |seance, index| %>
+
+          <%= link_to objective_seance_path(@objective, seance),
+              class: "list-group-item list-group-item-action py-3" do %>
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div>
+                <div class="fw-semibold">
+                  Séance <%= index + 1 %>
+                  ·
+                  <%= seance.session_type.capitalize %>
+                </div>
+
+                <small class="text-muted">
+                  <%= seance.distance %> km
+                  ·
+                  <%= seance.pace %>
+                </small>
+              </div>
+
+              <div class="text-muted">
+                →
+              </div>
+
+            </div>
+
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
