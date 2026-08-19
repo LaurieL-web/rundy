@@ -1,16 +1,34 @@
 <h1>Pages#home</h1>
-<%= form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
-  <div>
-    <%= f.email_field :email, placeholder: "Email" %>
-  </div>
 
-  <div>
-    <%= f.password_field :password, placeholder: "Mot de passe" %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
+    <div>
+      <%= f.email_field :email, placeholder: "Email" %>
+    </div>
 
-  <%= f.submit "Se connecter" %>
+    <div>
+      <%= f.password_field :password, placeholder: "Mot de passe" %>
+    </div>
+
+    <%= f.submit "Se connecter" %>
+  <% end %>
+
+  <%= link_to "Créer un compte", new_user_registration_path %>
+  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+<% else %>
+
+  <%= simple_form_for @objective, url: objectives_path, method: :post do |f| %>
+
+    <%= f.input :distance, label: "Distance" %>
+
+    <%= f.input :target_time, label: "Temps objectif" %>
+
+    <%= f.input :prepa_duration, label: "Durée de préparation" %>
+
+    <%= f.input :frequency, label: "Nombre de séances par semaine" %>
+
+    <%= f.submit "Créer mon objectif", class: "btn btn-primary" %>
+
+  <% end %>
 <% end %>
-
-<%= link_to "Créer un compte", new_user_registration_path %>
-<%= button_to "Se déconnecter", destroy_user_session_path, method: :delete %>
 <p>Find me in app/views/pages/home.html.erb</p>

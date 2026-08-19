@@ -1,7 +1,7 @@
 
 # 1. Clean the database 🗑️
 puts "Cleaning database..."
-Session.destroy_all
+Seance.destroy_all
 Objective.destroy_all
 User.destroy_all
 
@@ -20,7 +20,7 @@ objective1 = Objective.create!(
   frequency: 3
 )
 
-Session.create!(
+Seance.create!(
   objective: objective1,
   session_type: "EF",
   distance: 5,
@@ -28,7 +28,7 @@ Session.create!(
   content: "Footing tranquille"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective1,
   session_type: "interval",
   distance: 6,
@@ -36,7 +36,7 @@ Session.create!(
   content: "6 x 400m avec récupération"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective1,
   session_type: "long",
   distance: 8,
@@ -59,7 +59,7 @@ objective2 = Objective.create!(
   frequency: 4
 )
 
-Session.create!(
+Seance.create!(
   objective: objective2,
   session_type: "EF",
   distance: 7,
@@ -67,7 +67,7 @@ Session.create!(
   content: "Footing récupération"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective2,
   session_type: "tempo",
   distance: 8,
@@ -75,7 +75,7 @@ Session.create!(
   content: "Course à allure seuil"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective2,
   session_type: "interval",
   distance: 10,
@@ -83,7 +83,7 @@ Session.create!(
   content: "5 x 1000m"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective2,
   session_type: "long",
   distance: 15,
@@ -104,7 +104,7 @@ objective3 = Objective.create!(
   frequency: 3
 )
 
-Session.create!(
+Seance.create!(
   objective: objective3,
   session_type: "EF",
   distance: 4,
@@ -112,7 +112,7 @@ Session.create!(
   content: "Footing facile de récupération"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective3,
   session_type: "interval",
   distance: 5,
@@ -120,7 +120,7 @@ Session.create!(
   content: "8 x 400m avec 1 min de récupération"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective3,
   session_type: "long",
   distance: 7,
@@ -143,7 +143,7 @@ objective4 = Objective.create!(
   frequency: 4
 )
 
-Session.create!(
+Seance.create!(
   objective: objective4,
   session_type: "EF",
   distance: 8,
@@ -151,7 +151,7 @@ Session.create!(
   content: "Footing endurance fondamentale"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective4,
   session_type: "tempo",
   distance: 10,
@@ -159,7 +159,7 @@ Session.create!(
   content: "2 x 4 km à allure marathon"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective4,
   session_type: "interval",
   distance: 12,
@@ -167,7 +167,7 @@ Session.create!(
   content: "6 x 1000m avec récupération"
 )
 
-Session.create!(
+Seance.create!(
   objective: objective4,
   session_type: "long",
   distance: 22,
@@ -176,4 +176,4 @@ Session.create!(
 )
 
 # 3. Display a message
-puts "Finished! Created #{User.count} users, #{Objective.count} objectives and #{Session.count} sessions."
+puts "Finished! Created #{User.count} users, #{Objective.count} objectives and #{Seance.count} sessions."
