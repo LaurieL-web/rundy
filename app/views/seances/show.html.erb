@@ -1,13 +1,27 @@
-<h1>Séance</h1>
+<div class="container py-5">
 
-<p>Type: <%= @seance.session_type %></p>
+  <div class="d-flex justify-content-between align-items-center mb-4">
 
-<p>Distance: <%= @seance.distance %> km</p>
+    <%= link_to "Back", objective_path, class: "btn btn-outline-secondary" %>
+  </div>
 
-<p>Allure: <%= @seance.pace %></p>
+  <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+        <h2 class="h5 fw-bold mb-3">Détails de la séance</h2>
+        <p>Type: <%= @seance.session_type %></p>
 
-<p>Contenu: <%= @seance.content %></p>
+        <p>Distance: <%= @seance.distance %> km</p>
 
-<%= link_to "Delete session",
-  objective_seance_path(@objective),
- data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %>
+        <p>Allure: <%= @seance.pace %></p>
+
+        <p>Contenu: <%= @seance.content %></p>
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+       <%= link_to "Delete session",
+        objective_seance_path(@objective),
+        class: "btn btn-danger",
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %>
+      </div>
+  </div>
+</div>

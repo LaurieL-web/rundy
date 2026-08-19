@@ -1,16 +1,37 @@
-<h1>Pages#home</h1>
+<section class="home-hero">
 
-  <%= simple_form_for @objective, url: objectives_path, method: :post do |f| %>
+  <div class="home-hero-content">
 
-    <%= f.input :distance, label: "Distance" %>
+  <span class="home-badge">
+    COACH APP
+  </span>
 
-    <%= f.input :target_time, label: "Temps objectif" %>
+  <h1 class="home-title">
+    MAKE THE<br>
+    DIFFERENCE
+  </h1>
 
-    <%= f.input :prepa_duration, label: "Durée de préparation" %>
+  <p class="home-subtitle">
+    Login for create a objectif
+  </p>
+  <div class="objective-form">
 
-    <%= f.input :frequency, label: "Nombre de séances par semaine" %>
+      <%= simple_form_for @objective, url: objectives_path do |f| %>
 
-    <%= f.submit "Créer mon objectif", class: "btn btn-primary" %>
+        <%= f.input :distance, label: "Distance" %>
 
-  <% end %>
-<p>Find me in app/views/pages/home.html.erb</p>
+        <%= f.input :target_time, label: "Temps objectif" %>
+
+        <%= f.input :prepa_duration, label: "Durée de préparation" %>
+
+        <%= f.input :frequency, label: "Nombre de séances par semaine" %>
+
+        <%= f.submit "Créer mon objectif", class: "btn btn-primary w-100" %>
+
+      <% end %>
+
+    </div>
+
+</div>
+
+</section>
