@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
       Content: #{@session.content}
       User request: #{params[:prompt]}
 
-      Return the updated session values.
+      Return the updated session values. As a hash
     PROMPT
   end
 end
