@@ -1,13 +1,9 @@
 class SeancesController < ApplicationController
-<<<<<<< HEAD
-=======
-  before_action :set_objective, only: [ :show, :index]
->>>>>>> master
+  before_action :set_objective, only: %i[show index]
   def show
     @seance = Seance.find(params[:id])
   end
 
-<<<<<<< HEAD
   def destroy
     @seance = Seance.find(params[:id])
     @seance.destroy
@@ -15,7 +11,7 @@ class SeancesController < ApplicationController
     redirect_to root_path
     # rediction à changer où ?
   end
-=======
+
   def index
     @seances = @objective.seances.all
   end
@@ -25,6 +21,4 @@ class SeancesController < ApplicationController
   def set_objective
     @objective = Objective.find(params[:objective_id])
   end
-
->>>>>>> master
 end
