@@ -4,8 +4,8 @@
   <div class="mb-5">
     <h1 class="fw-bold mb-3">Mon objectif</h1>
 
-    <div class="row g-3">
-      <div class="col-md-3">
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-lg-6">
         <div class="card shadow-sm border-0">
           <div class="card-body">
             <small class="text-muted">Distance</small>
@@ -16,48 +16,58 @@
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-12 col-lg-6">
         <div class="card shadow-sm border-0">
           <div class="card-body">
-            <small class="text-muted">Durée</small>
+            <small class="text-muted">Temps</small>
             <h3 class="mb-0">
-              <%= @objective.prepa_duration %> semaines
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card shadow-sm border-0">
-          <div class="card-body">
-            <small class="text-muted">Séances</small>
-            <h3 class="mb-0">
-              <%= @objective.seances.count %>
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card shadow-sm border-0">
-          <div class="card-body">
-            <small class="text-muted">Fréquence</small>
-            <h3 class="mb-0">
-              <%= @objective.frequency %> / semaine
+              <%= @objective.target_time.strftime("%Hh%M") %>
             </h3>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
   <!-- Programme -->
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="fw-bold mb-0">Mon programme</h2>
     <span class="badge bg-light text-dark">
-      <%= @objective.prepa_duration %> semaines
+      <% if @objective.seances.count == 1 %>
+        <%= @objective.seances.count %> séance
+      <% else %>
+        <%= @objective.seances.count %> séances
+      <% end %>
     </span>
+  </div>
+
+  <div class="row g-3 mb-3">
+
+    <div class="col-12 col-lg-6">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <small class="text-muted">Durée de la préparation</small>
+            <h3 class="mb-0">
+              <% if @objective.prepa_duration == 1 %>
+                <%= @objective.prepa_duration %> semaine
+              <% else %>
+                <%= @objective.prepa_duration %> semaines
+              <% end %>
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <small class="text-muted">Fréquence d'entraînement</small>
+            <h3 class="mb-0">
+              <%= @objective.frequency %> x / semaine
+            </h3>
+          </div>
+        </div>
+      </div>
   </div>
 
 
@@ -86,7 +96,7 @@
               <div>
                 <div class="fw-semibold">
                   Séance <%= index + 1 %>
-                  ·
+                  -
                   <%= seance.session_type.capitalize %>
                 </div>
 
