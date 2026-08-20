@@ -23,14 +23,15 @@ class SeancesController < ApplicationController
   def update
     @seance = Seance.find(params[:id])
 
-    response = RubyLLM
-      .chat
-      .ask(prompt_update)
+    response = RubyLLM.chat.ask(prompt_update)
 
-      @seance.update!(response.content)
-      @objective = @seance.objective
+    parsed = JSON.parse(response.content)
 
-      redirect_to objective_seances_path(@objective)
+    if @seance.update(parsed)
+      redirect_to objective_seances_path(@seance.objective)
+    else
+      redirect_to seance_path(@seance), alert: "Update failed"
+    end
   end
 
   private
