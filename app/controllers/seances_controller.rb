@@ -15,10 +15,10 @@ class SeancesController < ApplicationController
       .chat
       .ask(prompt_update)
 
-    @seance.update!(response.content)
-    @objective = @seance.objective
+      @seance.update!(response.content)
+      @objective = @seance.objective
 
-    redirect_to objective_seances_path(@objective)
+      redirect_to objective_seances_path(@objective)
   end
 
   private
@@ -29,17 +29,16 @@ class SeancesController < ApplicationController
   def prompt_update
     <<~PROMPT
       You are an experienced running coach.
-
-      Update this running seance based on the user's request.
-
-      Current session:
-      Session type: #{@seance.session_type}
-      Distance: #{@seance.distance} km
-      Pace: #{@seance.pace}
-      Content: #{@seance.content}
-      User request: #{params[:prompt]}
-
-      Return the updated seance values. As a hash
+      my  goal is #{@objective}
+      Current seance is #{@seance}
+      Update this current seance based my goal.
+      format your answer like this:
+      {
+        seance_type: "easy",
+        distance: 6,
+        pace: "6:15/km",
+        content: "Course facile en endurance fondamentale"
+      }
     PROMPT
   end
 
