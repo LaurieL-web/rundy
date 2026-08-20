@@ -2,7 +2,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <%= link_to "Back", objective_seances_path(objective_id: current_user.objectives.last.id), class: "btn btn-outline-secondary" %>
+    <%= link_to "Retour", objective_seances_path(objective_id: current_user.objectives.last.id), class: "btn btn-outline-secondary" %>
   </div>
 
   <div class="card shadow-sm border-0">
@@ -18,10 +18,10 @@
       </div>
 
       <div class="d-flex gap-2 mt-4 p-4">
-       <%= link_to "Delete session",
+       <%= link_to "Supprimer la séance",
         seance_path(@seance),
         class: "btn btn-danger",
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %>
+        data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"} %>
         <%= link_to "Modifier", 
         objective_seance_path(@objective, @seance),
         data: { turbo_method: :patch }, class: "btn btn-outline-secondary" %>
