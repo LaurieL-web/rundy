@@ -23,9 +23,9 @@ class SeancesController < ApplicationController
   def update
     @seance = Seance.find(params[:id])
 
-    #response = RubyLLM.chat.ask(prompt_update)
-    #parsed = JSON.parse(response.content)
-    parsed = { "session_type" => nil, "distance" => 10, "pace" => "5:00", "content" => "test" }
+    response = RubyLLM.chat.ask(prompt_update)
+    parsed = JSON.parse(response.content)
+    #parsed = { "session_type" => nil, "distance" => 10, "pace" => "5:00", "content" => "test" }
 
     if @seance.update(
       session_type: parsed["session_type"],
