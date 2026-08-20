@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-dark" style="background-color: #122C34;">
+<div class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #122C34;">
   <div class="container-fluid">
 
     <%= link_to root_path, class: "navbar-brand" do %>
@@ -22,12 +22,6 @@
       <ul class="navbar-nav ms-auto align-items-center gap-3">
 
         <% if user_signed_in? %>
-
-          <li class="nav-item">
-            <%= link_to "Créer un objectif",
-                        root_path,
-                        class: "nav-link text-white" %>
-          </li>
 
           <% if current_user.objectives.any? %>
             <li class="nav-item">
