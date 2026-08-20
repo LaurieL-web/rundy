@@ -25,7 +25,8 @@ Seance.create!(
   session_type: "EF",
   distance: 5,
   pace: "6:00/km",
-  content: "Footing tranquille"
+  content: "Footing tranquille",
+  index: 1
 )
 
 Seance.create!(
@@ -33,7 +34,8 @@ Seance.create!(
   session_type: "interval",
   distance: 6,
   pace: "5:00/km",
-  content: "6 x 400m avec récupération"
+  content: "6 x 400m avec récupération",
+  index: 2
 )
 
 Seance.create!(
@@ -41,7 +43,8 @@ Seance.create!(
   session_type: "long",
   distance: 8,
   pace: "6:15/km",
-  content: "Sortie longue"
+  content: "Sortie longue",
+  index: 3
 )
 
 
@@ -64,7 +67,8 @@ Seance.create!(
   session_type: "EF",
   distance: 7,
   pace: "6:00/km",
-  content: "Footing récupération"
+  content: "Footing récupération",
+  index: 1
 )
 
 Seance.create!(
@@ -72,7 +76,8 @@ Seance.create!(
   session_type: "tempo",
   distance: 8,
   pace: "5:15/km",
-  content: "Course à allure seuil"
+  content: "Course à allure seuil",
+  index: 2
 )
 
 Seance.create!(
@@ -80,7 +85,8 @@ Seance.create!(
   session_type: "interval",
   distance: 10,
   pace: "4:50/km",
-  content: "5 x 1000m"
+  content: "5 x 1000m",
+  index: 3
 )
 
 Seance.create!(
@@ -88,7 +94,8 @@ Seance.create!(
   session_type: "long",
   distance: 15,
   pace: "6:10/km",
-  content: "Sortie longue"
+  content: "Sortie longue",
+  index: 4
 )
 user3 = User.create!(
   email: "julien@gmail.com",
@@ -109,7 +116,8 @@ Seance.create!(
   session_type: "EF",
   distance: 4,
   pace: "6:30/km",
-  content: "Footing facile de récupération"
+  content: "Footing facile de récupération",
+  index: 1
 )
 
 Seance.create!(
@@ -117,7 +125,8 @@ Seance.create!(
   session_type: "interval",
   distance: 5,
   pace: "5:00/km",
-  content: "8 x 400m avec 1 min de récupération"
+  content: "8 x 400m avec 1 min de récupération",
+  index: 2
 )
 
 Seance.create!(
@@ -125,7 +134,8 @@ Seance.create!(
   session_type: "long",
   distance: 7,
   pace: "6:20/km",
-  content: "Sortie longue progressive"
+  content: "Sortie longue progressive",
+  index: 3
 )
 
 
@@ -148,7 +158,8 @@ Seance.create!(
   session_type: "EF",
   distance: 8,
   pace: "6:15/km",
-  content: "Footing endurance fondamentale"
+  content: "Footing endurance fondamentale",
+  index: 1
 )
 
 Seance.create!(
@@ -156,7 +167,8 @@ Seance.create!(
   session_type: "tempo",
   distance: 10,
   pace: "5:15/km",
-  content: "2 x 4 km à allure marathon"
+  content: "2 x 4 km à allure marathon",
+  index: 2
 )
 
 Seance.create!(
@@ -164,7 +176,8 @@ Seance.create!(
   session_type: "interval",
   distance: 12,
   pace: "4:45/km",
-  content: "6 x 1000m avec récupération"
+  content: "6 x 1000m avec récupération",
+  index: 3
 )
 
 Seance.create!(
@@ -172,7 +185,8 @@ Seance.create!(
   session_type: "long",
   distance: 22,
   pace: "5:50/km",
-  content: "Sortie longue avec les 5 derniers km à allure marathon"
+  content: "Sortie longue avec les 5 derniers km à allure marathon",
+  index: 4
 )
 
 # 3. Display a message

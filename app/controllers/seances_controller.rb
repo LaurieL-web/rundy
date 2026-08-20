@@ -1,12 +1,10 @@
 class SeancesController < ApplicationController
-  before_action :set_objective, only: [:show, :index, :update]
-
-  def show
-    @seance = Seance.find(params[:id])
-  end
+  before_action :set_objective, only: %i[show index update_status]
+  before_action :set_seance, only: %i[show destroy update_status]
+  def show;end
 
   def destroy
-    @seance = Seance.find(params[:id])
+    
     @objective = @seance.objective
     @seance.destroy
 
@@ -17,9 +15,16 @@ class SeancesController < ApplicationController
     @seances = @objective.seances
   end
 
-  def edit
+  def update_status
+    @seance.status = !@seance.status
+    @seance.save
 
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to objective_seances_path(@objective) }
+    end
   end
+  def edit;end
   def update
     @seance = Seance.find(params[:id])
 
@@ -42,6 +47,7 @@ class SeancesController < ApplicationController
   end
 
   private
+
   def prompt_update
     <<~PROMPT
       Tu es un coach de course à pied expert.
@@ -89,6 +95,10 @@ class SeancesController < ApplicationController
 
       Retourne uniquement le JSON.
     PROMPT
+  end
+
+  def set_seance
+    @seance = Seance.find(params[:id])
   end
 
   def set_objective

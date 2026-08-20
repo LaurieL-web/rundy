@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_19_132107) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_20_155520) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_132107) do
     t.integer "distance"
     t.integer "frequency"
     t.integer "prepa_duration"
-    t.time "target_time"
+    t.string "target_time"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_objectives_on_user_id"
@@ -48,9 +48,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_132107) do
     t.string "content"
     t.datetime "created_at", null: false
     t.float "distance"
+    t.integer "index"
     t.bigint "objective_id", null: false
     t.string "pace"
     t.string "session_type"
+    t.boolean "status", default: false
     t.datetime "updated_at", null: false
     t.index ["objective_id"], name: "index_seances_on_objective_id"
   end

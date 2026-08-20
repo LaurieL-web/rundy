@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@seance) do %>
+
+  <%= render "seances/seance", objective: @seance.objective, seance: @seance %>
+
+<% end %>

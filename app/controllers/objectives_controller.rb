@@ -1,10 +1,15 @@
 class ObjectivesController < ApplicationController
   def create
+    target_time = params[:objective][:target_time]
+    if target_time.present?
+      hours, minutes = target_time.split("h").map(&:to_i)
+      target_time = Time.zone.local(2000, 1, 1, hours, minutes)
+    end
+
     @objective = Objective.new(objective_params)
     @user = current_user
     @objective.user = @user
     if @objective.save!
-      redirect_to objective_seances_path(@objective)
       prompt = <<-PROMPT
       Tu es un coach de course à pied expert.
 
@@ -55,12 +60,15 @@ class ObjectivesController < ApplicationController
       PROMPT
       seances = RubyLLM.chat.ask(prompt).content
       eval(seances).each do |week|
-        week[:seances].each do |seance|
+        week[:seances].each_with_index do |seance, index|
           new_seance = Seance.new(seance)
+          new_seance.index = index + 1
           new_seance.objective = @objective
           new_seance.save
         end
       end
+      Rails.logger.debug "TARGET TIME PARAM : #{params[:objective][:target_time].inspect}"
+      redirect_to objective_seances_path(@objective)
     else
       redirect_to root_path, status: :unprocessable_entity
     end
