@@ -7,10 +7,10 @@ class SeancesController < ApplicationController
 
   def destroy
     @seance = Seance.find(params[:id])
+    @objective = @seance.objective
     @seance.destroy
 
-    redirect_to root_path
-    # rediction à changer où ?
+    redirect_to objective_seances_path(@objective)
   end
 
   def index
