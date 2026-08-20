@@ -1,10 +1,10 @@
 class SeancesController < ApplicationController
-  before_action :set_objective, only: %i[show index update_status]
-  before_action :set_seance, only: %i[show destroy update_status]
+  before_action :set_objective, only: %i[show index update_status update]
+  before_action :set_seance, only: %i[show destroy update_status update]
   def show;end
 
   def destroy
-    
+
     @objective = @seance.objective
     @seance.destroy
 
@@ -25,6 +25,7 @@ class SeancesController < ApplicationController
     end
   end
   def edit;end
+
   def update
     @seance = Seance.find(params[:id])
 
