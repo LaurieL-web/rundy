@@ -1,25 +1,40 @@
-<h2>Sign up</h2>
+<section class="home-hero">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <div class="home-hero-content">
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+    <span class="home-badge">
+      COACH APP
+    </span>
+
+    <h1 class="home-title">
+      DÉMARRE TON AVENTURE
+      MAINTENANT
+    </h1>
+
+    <p class="home-subtitle">
+      Inscris-toi et dépasse tes objectifs
+    </p>
+
+    <div class="form-container">
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <%= f.input :email %>
+
+    <%= f.input :password %>
+
+    <%= f.input :password_confirmation %>
+
+    <%= f.button :submit, "S'inscrire", class: "btn-1" %>
+
+  <% end %>
+
+  <div class="devise-links">
+    <%= link_to "Déjà inscrit ? Se connecter", new_session_path(resource_name) %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+  </div>
+
+</section>
