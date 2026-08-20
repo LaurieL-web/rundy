@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-dark" style="background-color: #122C34;">
   <div class="container-fluid">
 
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "LOGO_RUNDY.png", width: 100 %>
     <% end %>
 
@@ -24,12 +24,18 @@
         <% if user_signed_in? %>
 
           <li class="nav-item">
-            <%= link_to "Programm", "#", class: "nav-link text-white" %>
+            <%= link_to "Créer un objectif",
+                        root_path,
+                        class: "nav-link text-white" %>
           </li>
 
-          <li class="nav-item">
-            <%= link_to "Objectif", "#", class: "nav-link text-white" %>
-          </li>
+          <% if current_user.objectives.any? %>
+            <li class="nav-item">
+              <%= link_to "Voir mon programme",
+                          objective_seances_path(objective_id: current_user.objectives.last.id),
+                          class: "nav-link text-white" %>
+            </li>
+          <% end %>
 
           <li class="nav-item dropdown ms-3">
 
@@ -43,11 +49,10 @@
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-
-              <%= link_to "Log out",
-                  destroy_user_session_path,
-                  class: "dropdown-item",
-                  data: { turbo_method: :delete } %>
+              <%= link_to "Se déconnecter",
+                          destroy_user_session_path,
+                          class: "dropdown-item",
+                          data: { turbo_method: :delete } %>
 
             </div>
 
@@ -57,14 +62,14 @@
 
           <li class="nav-item">
             <%= link_to "Se connecter",
-                new_user_session_path,
-                class: "nav-link text-white" %>
+                        new_user_session_path,
+                        class: "nav-link text-white" %>
           </li>
 
           <li class="nav-item">
             <%= link_to "S'inscrire",
-                new_user_registration_path,
-                class: "nav-link text-white" %>
+                        new_user_registration_path,
+                        class: "nav-link text-white" %>
           </li>
 
         <% end %>
