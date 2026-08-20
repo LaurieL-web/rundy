@@ -5,3 +5,4 @@ class Chat < ApplicationRecord
 
   validates :distance, presence: true
 end
+
