@@ -27,10 +27,10 @@ class SeancesController < ApplicationController
 
     parsed = JSON.parse(response.content)
 
-    if @seance.update(parsed)
-      redirect_to objective_seances_path(@seance.objective)
+    if @seance.update!(session_type: parsed["session_type"], distance: parsed["distance"], pace: parsed["pace"], content: parsed["content"])
+      redirect_to objective_seance_path(@objective, @seance)
     else
-      redirect_to seance_path(@seance), alert: "Update failed"
+      render :show, alert: "Update failed"
     end
   end
 
