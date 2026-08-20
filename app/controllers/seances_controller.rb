@@ -24,13 +24,20 @@ class SeancesController < ApplicationController
     @seance = Seance.find(params[:id])
 
     response = RubyLLM.chat.ask(prompt_update)
-
     parsed = JSON.parse(response.content)
+    #parsed = { "session_type" => nil, "distance" => 10, "pace" => "5:00", "content" => "test" }
 
-    if @seance.update!(session_type: parsed["session_type"], distance: parsed["distance"], pace: parsed["pace"], content: parsed["content"])
-      redirect_to objective_seance_path(@objective, @seance)
+    if @seance.update(
+      session_type: parsed["session_type"],
+      distance: parsed["distance"],
+      pace: parsed["pace"],
+      content: parsed["content"]
+      )
+      redirect_to objective_seance_path(@objective, @seance),
+                notice: "Séance mise à jour ✅."
     else
-      render :show, alert: "Update failed"
+      flash.now[:alert] = "🪲 Bug dans la matrice"
+      render :show, status: :unprocessable_entity
     end
   end
 
