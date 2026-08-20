@@ -1,6 +1,5 @@
 class SeancesController < ApplicationController
-  before_action :set_objective, only: [:show, :index]
-  before_action :set_seance, only: [:update]
+  before_action :set_objective, only: [:show, :index, :update]
 
   def show
     @seance = Seance.find(params[:id])
@@ -18,7 +17,12 @@ class SeancesController < ApplicationController
     @seances = @objective.seances
   end
 
+  def edit
+
+  end
   def update
+    @seance = Seance.find(params[:id])
+
     response = RubyLLM
       .chat
       .ask(prompt_update)
@@ -30,23 +34,52 @@ class SeancesController < ApplicationController
   end
 
   private
-  def set_session
-    @seance = Seance.find(params[:id])
-  end
-
   def prompt_update
     <<~PROMPT
-      You are an experienced running coach.
-      my  goal is #{@objective}
-      Current seance is #{@seance}
-      Update this current seance based my goal.
-      format your answer like this:
+      Tu es un coach de course à pied expert.
+
+      Objectif
+
+      * #{@objective.distance} km en #{@objective.target_time}
+      * Préparation : #{@objective.prepa_duration} semaines
+      * Fréquence : #{@objective.frequency} séances/semaine
+
+      Séance actuelle
+
+      * type: #{@seance.session_type}
+      * distance: #{@seance.distance} km
+      * allure: #{@seance.pace}
+      * contenu: #{@seance.content}
+
+      Tâche
+
+      Adapte cette séance pour qu’elle soit cohérente avec l’objectif, la durée de préparation et la fréquence d’entraînement. Conserve son intention autant que possible.
+
+      Règles
+
+      * session_type: string, de préférence easy, long, tempo, interval, recovery, threshold ou race
+      * distance: number en km, jamais une string
+      * pace: string en min/km, format M:SS/km
+      * content: string courte et exploitable par le coureur
+      * Exactement ces 4 clés, dans cet ordre
+      * Aucune clé supplémentaire
+      * Aucun texte, Markdown ou commentaire hors du JSON
+      * Réponse = JSON valide uniquement, avec guillemets doubles
+
+      Format obligatoire
+
       {
-        seance_type: "easy",
-        distance: 6,
-        pace: "6:15/km",
-        content: "Course facile en endurance fondamentale"
+      "session_type": "easy",
+      "distance": 6,
+      "pace": "6:15/km",
+      "content": "Course facile en endurance fondamentale"
       }
+
+      Vérifie silencieusement avant de répondre
+
+      JSON valide · 4 clés exactes · types corrects · cohérence avec l’objectif · aucun texte hors JSON.
+
+      Retourne uniquement le JSON.
     PROMPT
   end
 
