@@ -4,10 +4,11 @@ class SeancesController < ApplicationController
   def show;end
 
   def destroy
+    
+    @objective = @seance.objective
     @seance.destroy
 
-    redirect_to root_path
-    # rediction à changer où ?
+    redirect_to objective_seances_path(@objective)
   end
 
   def index
@@ -28,13 +29,20 @@ class SeancesController < ApplicationController
     @seance = Seance.find(params[:id])
 
     response = RubyLLM.chat.ask(prompt_update)
-
     parsed = JSON.parse(response.content)
+    #parsed = { "session_type" => nil, "distance" => 10, "pace" => "5:00", "content" => "test" }
 
-    if @seance.update(parsed)
-      redirect_to objective_seances_path(@seance.objective)
+    if @seance.update(
+      session_type: parsed["session_type"],
+      distance: parsed["distance"],
+      pace: parsed["pace"],
+      content: parsed["content"]
+      )
+      redirect_to objective_seance_path(@objective, @seance),
+                notice: "Séance mise à jour ✅."
     else
-      redirect_to seance_path(@seance), alert: "Update failed"
+      flash.now[:alert] = "🪲 Bug dans la matrice"
+      render :show, status: :unprocessable_entity
     end
   end
 

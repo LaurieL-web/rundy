@@ -1,21 +1,28 @@
 <section class="home-hero">
 
-  <div class="home-hero-content">
+  <div class="home-hero-content home-layout">
 
-    <span class="home-badge">
-      COACH APP
-    </span>
+    <div class="home-text">
 
-    <h1 class="home-title">
-      FAIS LA DIFFÉRENCE
-    </h1>
+      <span class="home-badge">
+        COACH APP
+      </span>
 
-    <p class="home-subtitle">
-      Crée ton objectif et commence ta préparation
-    </p>
+      <h1 class="home-title">
+        FAIS LA DIFFÉRENCE
+      </h1>
+
+      <p class="home-subtitle">
+        Pas besoin de chercher pendant des heures quelles séances réaliser.
+
+        Rundy utilise les informations de ton objectif pour créer une préparation cohérente avec ton rythme et tes disponibilités.
+      </p>
+
+
+    </div>
 
     <div class="form-container">
-
+    <h2 class="home-title-2">CRÉE TON OBJECTIF</h2>
       <%= simple_form_for @objective, url: objectives_path do |f| %>
 
         <%= f.input :distance,
@@ -39,5 +46,120 @@
     </div>
 
   </div>
+
+</section>
+<section class="features-section">
+  <h2 class="home-title-2" style>
+    TOUT CE QU’IL TE FAUT POUR PROGRESSER
+  </h2>
+    <div class="features-container">
+
+      <div class="feature-card">
+        <i class="fa-solid fa-bullseye feature-icon"></i>
+
+        <h3 class="feature-title">
+          Définis ton objectif
+        </h3>
+
+        <p class="feature-text">
+          Choisis ta distance, ton temps cible et la durée de ta préparation.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-calendar-days feature-icon"></i>
+
+        <h3 class="feature-title">
+          Ton programme personnalisé
+        </h3>
+
+        <p class="feature-text">
+          Obtiens un programme adapté à ton objectif et à ton rythme.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-person-running feature-icon"></i>
+
+        <h3 class="feature-title">
+          Entraîne-toi
+        </h3>
+
+        <p class="feature-text">
+          Retrouve facilement chacune de tes séances de préparation.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-chart-line feature-icon"></i>
+
+        <h3 class="feature-title">
+          Suis ta progression
+        </h3>
+
+        <p class="feature-text">
+          Visualise ta progression au fil de ta préparation.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-stopwatch feature-icon"></i>
+
+        <h3 class="feature-title">
+          Atteins ton chrono
+        </h3>
+
+        <p class="feature-text">
+          Travaille progressivement pour te rapprocher de ton temps objectif.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-trophy feature-icon"></i>
+
+        <h3 class="feature-title">
+          Dépasse-toi
+        </h3>
+
+        <p class="feature-text">
+          Arrive prêt le jour de ta course et fais la différence.
+        </p>
+      </div>
+
+    </div>
+
+</section>
+<section class="presentation-section">
+
+  <div class="presentation-grid">
+
+    <div class="presentation-image">
+      <%= image_tag "img-seance-1.png", alt: "Présentation Rundy" %>
+    </div>
+
+    <div class="presentation-content">
+      <span class="home-badge">
+        DÉPASSE TES OBJECTIFS
+      </span>
+      <h2 class="home-title">
+        TES SEANCES, TOUTES PRÊTES
+      </h2>
+      <p>Rundy t’accompagne dans ta préparation avec un programme adapté à ton objectif, ton rythme et tes disponibilités.</p>
+
+
+    </div>
+
+    <div class="presentation-image">
+      <%= image_tag "img-seance-2.png", alt: "Programme d'entraînement Rundy" %>
+    </div>
+
+  </div>
+
+</section>
+<section class="rundy-footer">
+
+  <h2 class="rundy-footer-title">
+    RUNDY
+  </h2>
 
 </section>
