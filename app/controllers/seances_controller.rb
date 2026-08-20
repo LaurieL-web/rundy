@@ -1,15 +1,7 @@
 class SeancesController < ApplicationController
-<<<<<<< HEAD
   before_action :set_objective, only: %i[show index update_status]
   before_action :set_seance, only: %i[show destroy update_status]
   def show;end
-=======
-  before_action :set_objective, only: [:show, :index, :update]
-
-  def show
-    @seance = Seance.find(params[:id])
-  end
->>>>>>> master
 
   def destroy
     @seance.destroy
@@ -22,14 +14,16 @@ class SeancesController < ApplicationController
     @seances = @objective.seances
   end
 
-<<<<<<< HEAD
   def update_status
     @seance.status = !@seance.status
     @seance.save
-=======
-  def edit
 
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to objective_seances_path(@objective) }
+    end
   end
+  def edit;end
   def update
     @seance = Seance.find(params[:id])
 
@@ -42,10 +36,10 @@ class SeancesController < ApplicationController
     else
       redirect_to seance_path(@seance), alert: "Update failed"
     end
->>>>>>> master
   end
 
   private
+
   def prompt_update
     <<~PROMPT
       Tu es un coach de course à pied expert.
