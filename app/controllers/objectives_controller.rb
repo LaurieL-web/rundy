@@ -12,7 +12,7 @@ class ObjectivesController < ApplicationController
       Durée : #{@objective.prepa_duration} semaines
       Fréquence : #{@objective.frequency} séances par semaine
 
-      Génère un programme progressif et cohérent incluant : endurance facile, sortie longue, tempo/seuil, fractionné/intervalles, récupération et allègement avant la course.
+      Génère un programme progressif et cohérent incluant exclusivement les session_type : "Endurance", "Facile", "Sortie longue", "Tempo" ou "Seuil", "Fractionné" ou "Intervalles", "Récupération".
 
       CONTRAINTES STRICTES :
       - Réponds uniquement avec du Ruby valide, sans Markdown ni texte.
@@ -22,6 +22,7 @@ class ObjectivesController < ApplicationController
       - INTERDICTION d'ajouter une séance supplémentaire.
       - `week` va de 1 à #{@objective.prepa_duration}.
       - Chaque séance contient uniquement : `session_type`, `distance`, `pace`, `content`.
+      - `session_type` doit être en français et utiliser uniquement : `"endurance"`, `"sortie_longue"`, `"tempo"`, `"fractionne"`, `"recuperation"`, `"course"`.
       - `distance` est en kilomètres.
       - `pace` est au format `MM:SS/km`.
       - `content` est précis et concis.
@@ -36,7 +37,7 @@ class ObjectivesController < ApplicationController
           week: 1,
           seances: [
             {
-              session_type: "easy",
+              session_type: "endurance",
               distance: 6,
               pace: "6:15/km",
               content: "6 km en endurance fondamentale"
