@@ -1,4 +1,11 @@
-<div class="container py-5 section">
+<div class="watermark-container">
+  <div class="watermark-pattern">
+    <% 50.times do %>
+      <i class="fa-solid fa-person-running tex-navy"></i>
+    <% end %>
+  </div>
+
+  <div class="container py-5 section">
   <i class="bi bi-person-running brand-watermark--icon"></i>
   <div class="mb-4">
     <%= link_to objective_seances_path(objective_id: current_user.objectives.last.id), class: "btn btn-outline-secondary" do %>
@@ -37,4 +44,5 @@
     <%= link_to "Modifier", objective_seance_path(@objective, @seance),
         data: { turbo_method: :patch }, class: "btn btn-2" %>
   </div>
+</div>
 </div>

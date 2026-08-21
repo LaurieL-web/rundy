@@ -1,4 +1,10 @@
-<div class="" >
+<div class="watermark-container">
+  <div class="watermark-pattern">
+    <% 50.times do %>
+      <i class="fa-solid fa-person-running tex-navy"></i>
+    <% end %>
+  </div>
+
   <div class="container py-5 section">
 
     <!-- Header objectif -->
@@ -93,7 +99,7 @@
 
 
     <!-- Semaines -->
-    <% @objective.prepa_duration.times do |week_index|  %>
+    <% @objective.prepa_duration.times do |week_index| %>
 
       <div class="card shadow-sm border-0 mb-4">
 
