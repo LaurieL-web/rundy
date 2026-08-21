@@ -1,0 +1,36 @@
+.seance-hero {
+  background: $navy;
+  color: white;
+  border-radius: $border-radius-xl;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.seance-hero__badge {
+  display: inline-block;
+  background: $turquoise;
+  color: $navy;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .35rem .9rem;
+  border-radius: 50px;
+  margin-bottom: .75rem;
+}
+
+.seance-hero__title {
+  font-weight: 700;
+  margin: 0;
+  text-transform: capitalize; // session_type is lowercase in the db
+}
+
+.seance-content {
+  background: white;
+  border-left: 4px solid $turquoise;
+  border-radius: 0 $border-radius-xl $border-radius-xl 0;
+  padding: 1.5rem 1.75rem;
+  color: $navy;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
