@@ -110,7 +110,7 @@
       </div>
 
       <div class="list-group list-group-flush">
-        <% @seances.where(week_index: week_index + 1).each do |seance| %>
+        <% @seances.where(week_index: week_index + 1).order(:index).each do |seance| %>
           <%= render "seances/seance", objective: @objective, seance: seance %>
         <% end %>
       </div>
