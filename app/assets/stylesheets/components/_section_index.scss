@@ -1,0 +1,11 @@
+.section {
+  width: 80vw;
+}
+
+
+/* Téléphone */
+@media (max-width: 576px) {
+.section {
+width: 100vw;
+}
+}
