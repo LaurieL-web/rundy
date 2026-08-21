@@ -1,4 +1,4 @@
-<div class="watermark-container">
+<div class="watermark-container" style="height: 100vh">
   <div class="watermark-pattern">
     <% 50.times do %>
       <i class="fa-solid fa-person-running tex-navy"></i>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="d-flex gap-2 seance-actions">
-      <%= link_to "Supprimer la séance", seance_path(@seance),
+      <%= link_to "Supprimer", seance_path(@seance),
         class: "btn btn-danger",
         data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" } %>
       <%= link_to "Modifier", objective_seance_path(@objective, @seance),
