@@ -1,3 +1,50 @@
 .background-green{
   background-color: $turquoise;
 }
+
+.watermark-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.watermark-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 100px;
+  gap: 10px;
+
+  pointer-events: none;
+  z-index: 0;
+
+  transform: rotate(-20deg) scale(1.2);
+}
+
+.watermark-pattern i {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+
+  font-size: 45px !important;
+  line-height: 1;
+
+  color: #122C34 !important;
+
+  opacity: 0.08;
+
+  width: auto;
+  height: auto;
+}
+
+.watermark-container > .container {
+  position: relative;
+  z-index: 1;
+}
