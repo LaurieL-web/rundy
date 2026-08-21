@@ -1,13 +1,13 @@
-<section class="home-hero">
+<section class="devise-hero">
 
-  <div class="home-hero-content">
+  <div class="devise-hero-content">
 
     <span class="home-badge">
       COACH APP
     </span>
 
     <h1 class="home-title">
-      NOUVEAU
+      NOUVEAU<br>
       MOT DE PASSE
     </h1>
 
@@ -15,7 +15,7 @@
       Choisis un nouveau mot de passe pour ton compte
     </p>
 
-    <div class="form-container">
+    <div class="devise-form-container">
 
       <%= simple_form_for(
         resource,
@@ -42,12 +42,13 @@
 
         <%= f.button :submit,
                      "Modifier mon mot de passe",
-                     class: "btn-1" %>
+                     class: "btn-2" %>
 
       <% end %>
 
       <div class="devise-links">
-        <%= link_to "Retour à la connexion", new_session_path(resource_name) %>
+        <%= link_to "Retour à la connexion",
+                    new_session_path(resource_name) %>
       </div>
 
     </div>

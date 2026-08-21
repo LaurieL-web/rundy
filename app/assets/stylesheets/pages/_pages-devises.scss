@@ -1,0 +1,137 @@
+.devise-hero {
+  min-height: 100vh;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 44, 52, 0.55),
+      rgba(18, 44, 52, 0.55)
+    ),
+    asset-url("hero_fond.png");
+
+  background-size: cover;
+  background-position: top center;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 75px 24px 60px;
+}
+
+
+.devise-hero-content {
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-align: left;
+}
+@media (max-width: 768px) {
+
+  .devise-hero {
+    padding: 60px 20px 40px;
+  }
+
+  .devise-hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .devise-form-container {
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .devise-form-container label {
+    width: 100%;
+    text-align: center;
+  }
+
+  .devise-form-container .btn-1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .devise-links {
+    text-align: center;
+  }
+}
+
+/* FORMULAIRE */
+
+.devise-form-container {
+  width: 100%;
+  max-width: 500px;
+  background: #122C34;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #d9d9d9;
+}
+
+
+/* LABELS */
+
+.devise-form-container label {
+  color: white;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+
+/* INPUTS */
+
+.devise-form-container .form-control {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+
+  background-color: rgba(255, 255, 255, 0.1);
+
+  color: white;
+}
+
+
+/* PLACEHOLDER */
+
+.devise-form-container .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* FOCUS */
+
+.devise-form-container .form-control:focus {
+  border-color: white;
+  box-shadow: none;
+
+  background-color: rgba(255, 255, 255, 0.15);
+
+  color: white;
+}
+
+
+/* LIENS DEVISE */
+
+.devise-links {
+  margin-top: 24px;
+
+  line-height: 2;
+}
+
+.devise-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.devise-links a:hover {
+  text-decoration: underline;
+}
