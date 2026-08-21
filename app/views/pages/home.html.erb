@@ -23,25 +23,31 @@
 
     <div class="form-container">
     <h2 class="home-title-2">CRÉE TON OBJECTIF</h2>
-      <%= simple_form_for @objective, url: objectives_path do |f| %>
+        <%= simple_form_for @objective, url: objectives_path do |f| %>
 
-        <%= f.input :distance,
-                    label: "Distance (km)" %>
+          <%= f.input :distance,
+                      label: "Distance (km)",
+                      placeholder: "10",
+                      input_html: { min: 5 } %>
 
-        <%= f.input :target_time,
-            label: "Temps objectif",
-            placeholder: "1h00" %>
+          <%= f.input :target_time,
+                      label: "Temps objectif",
+                      placeholder: "1h00" %>
 
-        <%= f.input :prepa_duration,
-                    label: "Durée de préparation (semaines)" %>
+          <%= f.input :prepa_duration,
+                      label: "Durée de préparation (semaines)",
+                      placeholder: "12",
+                      input_html: { min: 0 } %>
 
-        <%= f.input :frequency,
-                    label: "Nombre de séances par semaine" %>
+          <%= f.input :frequency,
+                      label: "Nombre de séances par semaine",
+                      placeholder: "4",
+                      input_html: { min: 0 } %>
 
-        <%= f.submit "Créer mon objectif",
-                     class: "btn-1" %>
+          <%= f.submit "Créer mon objectif",
+                      class: "btn-1" %>
 
-      <% end %>
+        <% end %>
 
     </div>
 
