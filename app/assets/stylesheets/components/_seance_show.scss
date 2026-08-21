@@ -40,3 +40,15 @@
   line-height: 1.7;
   font-size: 1.05rem;
 }
+.seance-actions {
+  display: flex;
+  gap: .5rem;
+}
+
+.seance-actions .btn {
+  flex: 0 0 auto;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
