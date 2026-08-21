@@ -2,10 +2,25 @@
   color: white;
   background-color: #122C34;
   border-radius: 8px;
+  border: 1px solid #122C34;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.btn-1:hover {
+  color: #122C34;
+  background-color: white;
+  border: 1px solid #122C34;
 }
 
 .btn-2 {
   color: white;
   background-color: #4EA5D9;
   border-radius: 8px;
+  width: 100%;
+}
+
+.btn-2:hover {
+  background-color: white;
+  color: #4EA5D9;
 }

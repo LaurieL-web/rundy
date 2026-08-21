@@ -1,13 +1,13 @@
-<section class="home-hero">
+<section class="devise-hero">
 
-  <div class="home-hero-content">
+  <div class="devise-hero-content">
 
     <span class="home-badge">
       COACH APP
     </span>
 
     <h1 class="home-title">
-      MOT DE PASSE
+      MOT DE PASSE<br>
       OUBLIÉ ?
     </h1>
 
@@ -15,7 +15,7 @@
       Entre ton email pour recevoir les instructions de réinitialisation
     </p>
 
-    <div class="form-container">
+    <div class="devise-form-container">
 
       <%= simple_form_for(
         resource,
@@ -34,14 +34,18 @@
 
         <%= f.button :submit,
                      "Réinitialiser mon mot de passe",
-                     class: "btn-1" %>
+                     class: "btn-2" %>
 
       <% end %>
 
       <div class="devise-links">
-        <%= link_to "Retour à la connexion", new_session_path(resource_name) %>
+        <%= link_to "Retour à la connexion",
+                    new_session_path(resource_name) %>
+
         <br>
-        <%= link_to "Créer un compte", new_registration_path(resource_name) %>
+
+        <%= link_to "Créer un compte",
+                    new_registration_path(resource_name) %>
       </div>
 
     </div>

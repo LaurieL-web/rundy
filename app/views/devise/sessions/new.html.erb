@@ -1,13 +1,13 @@
-<section class="home-hero">
+<section class="devise-hero">
 
-  <div class="home-hero-content">
+  <div class="devise-hero-content">
 
     <span class="home-badge">
       COACH APP
     </span>
 
     <h1 class="home-title">
-      FAIS LA
+      FAIS LA<br>
       DIFFÉRENCE
     </h1>
 
@@ -15,7 +15,7 @@
       Connecte-toi pour créer ou suivre ton objectif
     </p>
 
-    <div class="form-container">
+    <div class="devise-form-container">
 
       <%= simple_form_for(
         resource,
@@ -34,7 +34,7 @@
                     required: false,
                     input_html: { autocomplete: "current-password" } %>
 
-        <%= f.button :submit, "Se connecter", class: "btn-1" %>
+        <%= f.button :submit, "Se connecter", class: "btn-2" %>
 
       <% end %>
 

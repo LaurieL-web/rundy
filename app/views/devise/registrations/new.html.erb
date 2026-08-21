@@ -1,13 +1,13 @@
-<section class="home-hero">
+<section class="devise-hero">
 
-  <div class="home-hero-content">
+  <div class="devise-hero-content">
 
     <span class="home-badge">
       COACH APP
     </span>
 
     <h1 class="home-title">
-      DÉMARRE TON AVENTURE
+      DÉMARRE TON AVENTURE<br>
       MAINTENANT
     </h1>
 
@@ -15,25 +15,42 @@
       Inscris-toi et dépasse tes objectifs
     </p>
 
-    <div class="form-container">
+    <div class="devise-form-container">
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= simple_form_for(
+        resource,
+        as: resource_name,
+        url: registration_path(resource_name)
+      ) do |f| %>
 
-    <%= f.input :email %>
+        <%= f.input :email,
+                    label: "Email",
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
 
-    <%= f.input :password %>
+        <%= f.input :password,
+                    label: "Mot de passe",
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
 
-    <%= f.input :password_confirmation %>
+        <%= f.input :password_confirmation,
+                    label: "Confirmation du mot de passe",
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
 
-    <%= f.button :submit, "S'inscrire", class: "btn-1" %>
+        <%= f.button :submit,
+                     "S'inscrire",
+                     class: "btn-2" %>
 
-  <% end %>
+      <% end %>
 
-  <div class="devise-links">
-    <%= link_to "Déjà inscrit ? Se connecter", new_session_path(resource_name) %>
-  </div>
+      <div class="devise-links">
+        <%= link_to "Déjà inscrit ? Se connecter",
+                    new_session_path(resource_name) %>
+      </div>
 
-</div>
+    </div>
 
   </div>
 
