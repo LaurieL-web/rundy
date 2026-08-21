@@ -38,7 +38,7 @@
     </div>
 
     <div class="d-flex gap-2 seance-actions">
-      <%= link_to "Supprimer la séance", seance_path(@seance),
+      <%= link_to "Supprimer", seance_path(@seance),
         class: "btn btn-danger",
         data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" } %>
       <%= link_to "Modifier", objective_seance_path(@objective, @seance),
