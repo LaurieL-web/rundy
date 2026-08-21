@@ -26,7 +26,8 @@ Seance.create!(
   distance: 5,
   pace: "6:00/km",
   content: "Footing tranquille",
-  index: 1
+  index: 1,
+  week_index: 1
 )
 
 Seance.create!(
@@ -35,7 +36,8 @@ Seance.create!(
   distance: 6,
   pace: "5:00/km",
   content: "6 x 400m avec récupération",
-  index: 2
+  index: 2,
+  week_index: 1
 )
 
 Seance.create!(
@@ -44,7 +46,8 @@ Seance.create!(
   distance: 8,
   pace: "6:15/km",
   content: "Sortie longue",
-  index: 3
+  index: 1,
+  week_index: 2
 )
 
 
@@ -68,7 +71,8 @@ Seance.create!(
   distance: 7,
   pace: "6:00/km",
   content: "Footing récupération",
-  index: 1
+  index: 1,
+  week_index: 1
 )
 
 Seance.create!(
@@ -77,7 +81,8 @@ Seance.create!(
   distance: 8,
   pace: "5:15/km",
   content: "Course à allure seuil",
-  index: 2
+  index: 2,
+  week_index: 1
 )
 
 Seance.create!(
@@ -86,7 +91,8 @@ Seance.create!(
   distance: 10,
   pace: "4:50/km",
   content: "5 x 1000m",
-  index: 3
+  index: 1,
+  week_index: 2
 )
 
 Seance.create!(
@@ -95,7 +101,8 @@ Seance.create!(
   distance: 15,
   pace: "6:10/km",
   content: "Sortie longue",
-  index: 4
+  index: 2,
+  week_index: 2
 )
 user3 = User.create!(
   email: "julien@gmail.com",
@@ -117,7 +124,8 @@ Seance.create!(
   distance: 4,
   pace: "6:30/km",
   content: "Footing facile de récupération",
-  index: 1
+  index: 1,
+  week_index: 1
 )
 
 Seance.create!(
@@ -126,7 +134,8 @@ Seance.create!(
   distance: 5,
   pace: "5:00/km",
   content: "8 x 400m avec 1 min de récupération",
-  index: 2
+  index: 2,
+  week_index: 1
 )
 
 Seance.create!(
@@ -135,9 +144,39 @@ Seance.create!(
   distance: 7,
   pace: "6:20/km",
   content: "Sortie longue progressive",
-  index: 3
+  index: 3,
+  week_index: 1
 )
 
+Seance.create!(
+  objective: objective3,
+  session_type: "EF",
+  distance: 4,
+  pace: "6:30/km",
+  content: "Footing facile de récupération",
+  index: 1,
+  week_index: 2
+)
+
+Seance.create!(
+  objective: objective3,
+  session_type: "interval",
+  distance: 5,
+  pace: "5:00/km",
+  content: "8 x 400m avec 1 min de récupération",
+  index: 2,
+  week_index: 2
+)
+
+Seance.create!(
+  objective: objective3,
+  session_type: "long",
+  distance: 7,
+  pace: "6:20/km",
+  content: "Sortie longue progressive",
+  index: 3,
+  week_index: 2
+)
 
 user4 = User.create!(
   email: "laurie@gmail.com",
@@ -159,7 +198,8 @@ Seance.create!(
   distance: 8,
   pace: "6:15/km",
   content: "Footing endurance fondamentale",
-  index: 1
+  index: 1,
+  week_index: 1
 )
 
 Seance.create!(
@@ -168,7 +208,8 @@ Seance.create!(
   distance: 10,
   pace: "5:15/km",
   content: "2 x 4 km à allure marathon",
-  index: 2
+  index: 2,
+  week_index: 1
 )
 
 Seance.create!(
@@ -177,7 +218,8 @@ Seance.create!(
   distance: 12,
   pace: "4:45/km",
   content: "6 x 1000m avec récupération",
-  index: 3
+  index: 1,
+  week_index: 2
 )
 
 Seance.create!(
@@ -186,7 +228,8 @@ Seance.create!(
   distance: 22,
   pace: "5:50/km",
   content: "Sortie longue avec les 5 derniers km à allure marathon",
-  index: 4
+  index: 2,
+  week_index: 2
 )
 
 # 3. Display a message

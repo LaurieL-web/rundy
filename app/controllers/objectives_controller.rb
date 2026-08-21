@@ -59,15 +59,15 @@ class ObjectivesController < ApplicationController
 
       PROMPT
       seances = RubyLLM.chat.ask(prompt).content
-      eval(seances).each do |week|
+      eval(seances).each_with_index do |week, week_index|
         week[:seances].each_with_index do |seance, index|
           new_seance = Seance.new(seance)
           new_seance.index = index + 1
+          new_seance.week_index = week_index + 1
           new_seance.objective = @objective
           new_seance.save
         end
       end
-      Rails.logger.debug "TARGET TIME PARAM : #{params[:objective][:target_time].inspect}"
       redirect_to objective_seances_path(@objective)
     else
       redirect_to root_path, status: :unprocessable_entity

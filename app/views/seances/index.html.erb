@@ -89,9 +89,9 @@
 
 
   <!-- Semaines -->
-  <% @seances.each_slice(@objective.frequency).with_index do |seances, week_index| %>
+  <% @objective.prepa_duration.times do |week_index|  %>
 
-  <div class="card shadow-sm border-0 mb-4">
+    <div class="card shadow-sm border-0 mb-4">
 
     <div class="card-header bg-white border-0 py-3">
       <h3 class="h5 fw-bold mb-0">
@@ -100,10 +100,11 @@
     </div>
 
     <div class="list-group list-group-flush">
-      <% seances.each_with_index do |seance, index| %>
+      <% @seances.where(week_index: week_index + 1).each do |seance| %>
         <%= render "seances/seance", objective: @objective, seance: seance %>
       <% end %>
     </div>
   </div>
+
 
 <% end %>
