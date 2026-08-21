@@ -4,15 +4,19 @@ class SeancesController < ApplicationController
   def show;end
 
   def destroy
-
     @objective = @seance.objective
+    seance_index = @seance.index
     @seance.destroy
+    @seances = @objective.seances
+    @seances.where(week_index: @seance.week_index).each do |seance|
+      seance.update(index: seance.index - 1) if seance.index > seance_index
+    end
 
     redirect_to objective_seances_path(@objective)
   end
 
   def index
-    @seances = @objective.seances
+    @seances = @objective.seances.order(:week_index)
   end
 
   def update_status
