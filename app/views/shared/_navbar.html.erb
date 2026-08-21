@@ -25,32 +25,39 @@
 
           <% if current_user.objectives.any? %>
             <li class="nav-item">
-              <%= link_to "Voir mon programme",
+              <%= link_to "Mon programme",
                           objective_seances_path(objective_id: current_user.objectives.last.id),
                           class: "nav-link text-white" %>
             </li>
           <% end %>
 
-          <li class="nav-item dropdown ms-3">
-
-            <i
-              class="fa-solid fa-circle-user fs-2 text-white"
-              id="navbarDropdown"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false">
-            </i>
-
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-              <%= link_to "Se déconnecter",
-                          destroy_user_session_path,
-                          class: "dropdown-item",
-                          data: { turbo_method: :delete } %>
-
-            </div>
-
+          <li class="nav-item">
+            <%= link_to root_path, class: "nav-link text-white" do %>
+              <i class="fa-solid fa-house fs-4"></i>
+            <% end %>
           </li>
+
+        <li class="nav-item dropdown">
+
+          <i
+            class="fa-solid fa-circle-user fs-2 text-white"
+            id="navbarDropdown"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            style="cursor: pointer;">
+          </i>
+
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+            <%= link_to "Se déconnecter",
+                        destroy_user_session_path,
+                        class: "dropdown-item",
+                        data: { turbo_method: :delete } %>
+
+          </div>
+
+        </li>
 
         <% else %>
 
