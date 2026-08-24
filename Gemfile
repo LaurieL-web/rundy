@@ -29,7 +29,7 @@ gem "solid_queue"
 gem "solid_cable"
 
 # IA
-gem "ruby_llm", "~> 1.2.0"
+gem "ruby_llm", "~> 1.16.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
