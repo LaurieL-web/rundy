@@ -39,7 +39,7 @@ Developed as part of a team using an agile methodology, with tasks divided acros
 - 🤝 **Git Workflow:** Coordinated code integration, feature branches, and PR reviews within a 4-person team.
 
 
-## 🚀 Getting Started
+## 🚀 Installation
 
 ```bash
 git clone [https://github.com/LaurieL-web/rundy.git](https://github.com/LaurieL-web/rundy.git)
