@@ -4,7 +4,7 @@
 
 Developed in **just one week** as part of a **4-person team** during the AI Software Development Bootcamp at [Le Wagon](https://www.lewagon.com).
 
-## 🎯 Purpose
+## 🎯 Goal
 
 Help every runner—from beginner to advanced—get a tailor-made training plan adapted to their fitness level, race goal, and schedule, generated automatically via AI.
 
