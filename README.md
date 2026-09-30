@@ -27,9 +27,13 @@ Help every runner—from beginner to advanced—get a tailor-made training plan 
 ## 👥 My Contributions
 
 - 🤖 **AI Training Plan Generation:** Built the core logic to prompt and stream personalized running plans using LLM integration.
-- 📝 **Goal Creation Flow:** Developed the multi-step user form (front & back) to capture race distance, target time, preparation duration, and training frequency.
-- 📊 **Program Dashboard:** Designed and implemented the "My Plan" page (database schema, backend logic, and Bootstrap UI).
+
+- 📝 **Goal Creation Flow:** Developed the user onboarding form (front & back) to capture race distance, target time, preparation duration and training frequency.
+
+- 📊 **Program Dashboard:** Designed and implemented the "Mon Programme" (My Training Plan) page (front & back).
+
 - 🤝 **Git Workflow:** Coordinated code integration, feature branches, and PR reviews within a 4-person team.
+
 
 ## 🚀 Getting Started
 
