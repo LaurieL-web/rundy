@@ -43,5 +43,6 @@ rails server
 
 The application will be available at http://localhost:3000.
 
-📌 Status
-Final bootcamp project — built for educational and portfolio demonstration purposes.
+## 📌 Status
+
+Training project — developed for educational purposes.
