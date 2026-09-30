@@ -24,7 +24,11 @@ Help every runner—from beginner to advanced—get a tailor-made training plan 
 | Database | PostgreSQL |
 | Tools & Deployment | Git / GitHub, Heroku |
 
-## 👥 My Contributions
+## 👥 Team
+
+Developed as part of a team using an agile methodology, with tasks divided across back-end, front-end and feature integration.
+
+## 💡 My Role
 
 - 🤖 **AI Training Plan Generation:** Built the core logic to prompt and stream personalized running plans using LLM integration.
 
